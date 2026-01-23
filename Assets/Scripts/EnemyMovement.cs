@@ -1,13 +1,30 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemyMovement : MonoBehaviour
 {
     private GameState gameState;
+    private float enemySpeed;
 
+    public float getEnemySpeed()
+    {
+        return enemySpeed;
+    }
     public void SetGameState(GameState _gameState)
     {
         gameState = _gameState;
+    }
+
+
+    private void Start()
+    {
+        RandomizeEnemySpeed();
+    }
+
+    public void RandomizeEnemySpeed(float maxSpeed = 0.75f)
+    {
+        enemySpeed = Random.Range(0.2f, maxSpeed);
     }
 
     private bool bIsAlive = false;
@@ -26,6 +43,7 @@ public class EnemyMovement : MonoBehaviour
         {
             gameObject.SetActive(true);
             gameObject.GetComponent<Collider2D>().enabled = true;
+            RandomizeEnemySpeed();
         }
 
     }
@@ -39,6 +57,7 @@ public class EnemyMovement : MonoBehaviour
         if (collision.CompareTag("PointsEnd"))
         {
             GetComponent<Collider2D>().enabled = false;
+            StartCoroutine(WaitToEnableCollision());
         }
     }
 
@@ -47,8 +66,14 @@ public class EnemyMovement : MonoBehaviour
     {
         if ( gameState.gameState == GameState.GameStateEnum.Game && bIsAlive)
         {
-            gameObject.transform.position -= new Vector3(0, (float)0.1, 0);
+            gameObject.transform.position -= new Vector3(0, enemySpeed, 0);
         }
+    }
+
+    private IEnumerator WaitToEnableCollision()
+    {
+        yield return new WaitForSeconds(1);
+        GetComponent<Collider2D>().enabled = true;
     }
 
 }

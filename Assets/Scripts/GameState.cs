@@ -37,4 +37,16 @@ public class GameState : MonoBehaviour
         }
     }
 
+    private int playerPositionIndex;
+
+    public int getPlayerPositionIndex()
+    {
+        return playerPositionIndex;
+    }
+
+    public void setPlayerPositionIndex(int index)
+    {
+        playerPositionIndex = index;
+    }
+
 }

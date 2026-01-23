@@ -9,6 +9,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private GameObject Systems;
     private GameManager gameManager;
     private SwipeDetection swipeDetection;
+    private GameState gameState;
 
 
     private Vector3Int startPosition = new (0, -6, 0);
@@ -20,6 +21,7 @@ public class CharacterController : MonoBehaviour
     {
         gameManager = Systems.GetComponent<GameManager>();
         swipeDetection = Systems.GetComponent<SwipeDetection>();
+        gameState = Systems.GetComponent<GameState>();
 
         HorizontalSnapPoints = gameManager.GetHorizontalSnapPositions();
 
@@ -50,7 +52,7 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-        if (Direction.x < 0)
+        else if (Direction.x < 0)
         {
             if (positionIndex - 1 != -1)
             {
@@ -66,6 +68,8 @@ public class CharacterController : MonoBehaviour
                 return;
             }
         }
+
+        gameState.setPlayerPositionIndex(positionIndex);
 
         if (Direction.x == 0)
         {
