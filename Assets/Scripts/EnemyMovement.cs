@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private GameState gameState;
     private float enemySpeed;
+    [SerializeField] private GameObject PointsGO;
 
     public float getEnemySpeed()
     {
@@ -58,6 +59,7 @@ public class EnemyMovement : MonoBehaviour
         {
             GetComponent<Collider2D>().enabled = false;
             StartCoroutine(WaitToEnableCollision());
+            Instantiate(PointsGO, transform.position, Quaternion.identity);
         }
     }
 

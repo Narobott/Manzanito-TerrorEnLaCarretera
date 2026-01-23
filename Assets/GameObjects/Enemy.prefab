@@ -130,7 +130,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0.016661763, y: -0.01666069}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.35999998, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 5.36, y: 4.43}
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555b0c519408de746b29e0acc6e24f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  PointsGO: {fileID: 9068916117403713873, guid: 4034cd004087d384a82be9ade39f93f8, type: 3}
   EnemyDied:
     m_PersistentCalls:
       m_Calls: []

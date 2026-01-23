@@ -10,4 +10,7 @@ public class GameManager : MonoBehaviour
     {
         return horizontalSnapPositions;
     }
+
+    [SerializeField]
+    public int enemyDodgePoints = 300;
 }

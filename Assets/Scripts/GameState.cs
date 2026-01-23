@@ -43,10 +43,17 @@ public class GameState : MonoBehaviour
     {
         return playerPositionIndex;
     }
-
     public void setPlayerPositionIndex(int index)
     {
         playerPositionIndex = index;
     }
+
+    private int points;
+
+    public void increasePoints(int points)
+    {
+        this.points += points;
+    }
+
 
 }
