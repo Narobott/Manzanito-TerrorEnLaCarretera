@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 4ae8ebfb9c2a0374d90ac7badcc161ec
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8587153117217129898
+    second: soraexplosion_0003_0
+  - first:
+      213: 2801496742075218290
+    second: soraexplosion_0003_1
+  - first:
+      213: -2273630567072828636
+    second: soraexplosion_0003_2
+  - first:
+      213: -4607928350522613433
+    second: soraexplosion_0003_3
+  - first:
+      213: -4057025751509589092
+    second: soraexplosion_0003_4
+  - first:
+      213: 4558442079394868750
+    second: soraexplosion_0003_5
+  - first:
+      213: -4824595775013704275
+    second: soraexplosion_0003_6
+  - first:
+      213: -5411916554776789172
+    second: soraexplosion_0003_7
+  - first:
+      213: 5513065112570763280
+    second: soraexplosion_0003_8
+  - first:
+      213: 2535773054218282831
+    second: soraexplosion_0003_9
+  - first:
+      213: 4709291504840656163
+    second: soraexplosion_0003_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: soraexplosion_0003_0
+      rect:
+        serializedVersion: 2
+        x: 1455
+        y: 2311
+        width: 385
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa58d9f6342bb2770800000000000000
+      internalID: 8587153117217129898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_1
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 2260
+        width: 345
+        height: 770
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 279bec6a17ae0e620800000000000000
+      internalID: 2801496742075218290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_2
+      rect:
+        serializedVersion: 2
+        x: 2059
+        y: 2056
+        width: 141
+        height: 795
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4237723ab017270e0800000000000000
+      internalID: -2273630567072828636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_3
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 2231
+        width: 312
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 741e5ac34995d00c0800000000000000
+      internalID: -4607928350522613433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_4
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 2027
+        width: 730
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c93a8a4f29c82b7c0800000000000000
+      internalID: -4057025751509589092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_5
+      rect:
+        serializedVersion: 2
+        x: 2274
+        y: 1587
+        width: 624
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0e26876be6d24f30800000000000000
+      internalID: 4558442079394868750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_6
+      rect:
+        serializedVersion: 2
+        x: 2295
+        y: 2041
+        width: 428
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dad257554b79b0db0800000000000000
+      internalID: -4824595775013704275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_7
+      rect:
+        serializedVersion: 2
+        x: 1484
+        y: 1881
+        width: 323
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4f3976219205e4b0800000000000000
+      internalID: -5411916554776789172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_8
+      rect:
+        serializedVersion: 2
+        x: 1655
+        y: 1183
+        width: 370
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 018116aa287528c40800000000000000
+      internalID: 5513065112570763280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_9
+      rect:
+        serializedVersion: 2
+        x: 2052
+        y: 1096
+        width: 359
+        height: 795
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4720bf5820e03320800000000000000
+      internalID: 2535773054218282831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soraexplosion_0003_10
+      rect:
+        serializedVersion: 2
+        x: 2204
+        y: 1347
+        width: 301
+        height: 479
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 325cac93ca3ca5140800000000000000
+      internalID: 4709291504840656163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      soraexplosion_0003_0: 8587153117217129898
+      soraexplosion_0003_1: 2801496742075218290
+      soraexplosion_0003_10: 4709291504840656163
+      soraexplosion_0003_2: -2273630567072828636
+      soraexplosion_0003_3: -4607928350522613433
+      soraexplosion_0003_4: -4057025751509589092
+      soraexplosion_0003_5: 4558442079394868750
+      soraexplosion_0003_6: -4824595775013704275
+      soraexplosion_0003_7: -5411916554776789172
+      soraexplosion_0003_8: 5513065112570763280
+      soraexplosion_0003_9: 2535773054218282831
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
