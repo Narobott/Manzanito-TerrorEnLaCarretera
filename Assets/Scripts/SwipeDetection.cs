@@ -8,6 +8,7 @@ public class SwipeDetection : MonoBehaviour
     public static SwipeDetection instance;
     public delegate void Swipe(Vector2 direction);
     public UnityEvent<Vector2> swipePerformed;
+    public UnityEvent pressPerformed;
     [SerializeField] private InputAction position, press;
 
     [SerializeField] private float swipeResistance = 100;

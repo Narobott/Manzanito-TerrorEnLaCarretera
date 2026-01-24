@@ -19,6 +19,8 @@ public class EnemySpawner : MonoBehaviour
     private float timeSinceLastSpawn;
     private int dificultyLevel;
 
+    [SerializeField] AudioClip[] availableAudioClips;
+
     private List<GameObject> deadEnemies;
 
     [SerializeField] private List<GameObject> enemiesOn0 = new();
@@ -128,6 +130,9 @@ public class EnemySpawner : MonoBehaviour
                 enemyMovement.RandomizeEnemySpeed(speedOnPosition);
             }
         }
+
+        enemy.GetComponent<AudioSource>().generator = availableAudioClips[Random.Range(0, availableAudioClips.Length)];
+        enemy.GetComponent<AudioSource>().Play();
 
         enemiesOnPoint.Add(enemy);
 
