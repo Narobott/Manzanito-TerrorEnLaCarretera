@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -50,10 +52,15 @@ public class GameState : MonoBehaviour
 
     private int points;
 
+    public UnityEvent pointsIncreased;
     public void increasePoints(int points)
     {
         this.points += points;
+        pointsIncreased.Invoke();
     }
-
+    public int getPoints()
+    {
+        return points;
+    }
 
 }

@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3860599799388098070}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.16238871, w: 0.9867269}
+  m_LocalRotation: {x: -0, y: -0, z: -0.14911447, w: 0.98882}
   m_LocalPosition: {x: 0.94, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   PointsGO: {fileID: 9068916117403713873, guid: 4034cd004087d384a82be9ade39f93f8, type: 3}
+  ExplosionGO: {fileID: 130377666474727819, guid: cdc545e7d41414148958f8f3b80ba74c, type: 3}
   EnemyDied:
     m_PersistentCalls:
       m_Calls: []
@@ -573,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9126114494199525305}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.12829798, w: 0.99173564}
+  m_LocalRotation: {x: -0, y: -0, z: 0.03446049, w: 0.99940604}
   m_LocalPosition: {x: 1.01, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
