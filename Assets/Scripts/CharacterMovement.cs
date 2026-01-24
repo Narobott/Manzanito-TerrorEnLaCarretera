@@ -31,6 +31,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         gameObject.transform.position = startPosition;
+        gameState.setPlayerPositionIndex(positionIndex);
     }
 
     void Move(Vector2 Direction)
