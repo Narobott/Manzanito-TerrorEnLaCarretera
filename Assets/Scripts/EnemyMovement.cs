@@ -38,12 +38,12 @@ public class EnemyMovement : MonoBehaviour
         bIsAlive = bAlive;
         if (!bAlive )
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             EnemyDied.Invoke(gameObject);
         }
         else
         {
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
             gameObject.GetComponent<Collider2D>().enabled = true;
             RandomizeEnemySpeed();
         }
@@ -52,20 +52,24 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("DeadEnd"))
+        if (gameState.gameState == GameState.GameStateEnum.Game)
         {
-            SetIsAlive(false);
-        }
-        if (collision.CompareTag("PointsEnd"))
-        {
-            GetComponent<Collider2D>().enabled = false;
-            StartCoroutine(WaitToEnableCollision());
-            Instantiate(PointsGO, transform.position, Quaternion.identity);
-        }
-        if (collision.CompareTag("Character"))
-        {
-            collision.GetComponent<CharacterStats>().ReduceCharacterHealth();
-            Instantiate(ExplosionGO, transform.position, Quaternion.identity);
+            if(collision.CompareTag("DeadEnd"))
+            {
+                SetIsAlive(false);
+            }
+            if (collision.CompareTag("PointsEnd"))
+            {
+                GetComponent<Collider2D>().enabled = false;
+                StartCoroutine(WaitToEnableCollision());
+                Instantiate(PointsGO, transform.position, Quaternion.identity);
+            }
+            if (collision.CompareTag("Character"))
+            {
+                collision.GetComponent<CharacterStats>().ReduceCharacterHealth();
+                Instantiate(ExplosionGO, transform.position, Quaternion.identity);
+            }
+
         }
 
     }

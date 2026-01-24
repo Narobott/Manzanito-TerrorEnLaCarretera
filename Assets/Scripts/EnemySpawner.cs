@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 10; i++)
         {
             GameObject createdEnemy = Instantiate(
                 enemyPrefab,
@@ -57,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
             );
 
             createdEnemy.GetComponent<EnemyMovement>().SetGameState(gameState);
-            createdEnemy.SetActive(false);
+            //createdEnemy.SetActive(false);
             deadEnemies.Add(createdEnemy);
         }
     }
