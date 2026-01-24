@@ -19,8 +19,24 @@ public class AudioManager : MonoBehaviour
     {
         if (audioMixer == null)
         {
-            Debug.LogError( "No audio mixer found in the audio manager, sound settings will not work");
+            Debug.LogError("No audio mixer found in the audio manager, sound settings will not work");
             Debug.Break();
+        }
+        if (PlayerPrefs.HasKey("MuteMaster"))
+        {
+            SetMuteMaster(PlayerPrefs.GetInt("MuteMaster") == 1 ? true : false);
+        }
+        if (PlayerPrefs.HasKey("MasterAudioLevel"))
+        {
+            SetMasterAudioLevel(PlayerPrefs.GetFloat("MasterAudioLevel"));
+        }
+        if (PlayerPrefs.HasKey("MusicAudioLevel"))
+        {
+            SetMusicAudioLevel(PlayerPrefs.GetFloat("MusicAudioLevel"));
+        }
+        if(PlayerPrefs.HasKey("SFXAudioLevel"))
+        {
+            SetSFXAudioLevel(PlayerPrefs.GetFloat("SFXAudioLevel"));
         }
     }
 
@@ -36,10 +52,18 @@ public class AudioManager : MonoBehaviour
     {
         MuteMaster = mute;
 
+
+        PlayerPrefs.SetInt("MuteMaster", MuteMaster ? 1 : 0);
+
         if (MuteMaster) audioMixer.SetFloat("Volume-Master", RangeToDb(0.00001f));
         else audioMixer.SetFloat("Volume-Master", RangeToDb(MasterAudioLevel));
 
         OnMasterAudioMuteChanged.Invoke(MuteMaster);
+    }
+
+    public bool GetMuteMaster()
+    {
+        return MuteMaster;
     }
 
     // Master audio level
@@ -56,10 +80,18 @@ public class AudioManager : MonoBehaviour
     {
         MasterAudioLevel = newMasterAudioLevel;
 
+
+        PlayerPrefs.SetFloat("MasterAudioLevel", MasterAudioLevel);
+
         if (MuteMaster) return;
 
         audioMixer.SetFloat("Volume-Master", RangeToDb(MasterAudioLevel));
         OnMasterAudioLevelChanged.Invoke(MasterAudioLevel);
+    }
+
+    public float GetMasterAudioLevel()
+    {
+        return MasterAudioLevel;
     }
 
 
@@ -76,8 +108,16 @@ public class AudioManager : MonoBehaviour
     public void SetMusicAudioLevel(float newMusicAudioLevel)
     {
         MusicAudioLevel = newMusicAudioLevel;
+
+        PlayerPrefs.SetFloat("MusicAudioLevel", MusicAudioLevel);
+
         audioMixer.SetFloat("Volume-Music", RangeToDb(MusicAudioLevel));
         OnMusicAudioLevelChanged.Invoke(MusicAudioLevel);
+    }
+
+    public float GetMusicAudioLevel()
+    {
+        return MusicAudioLevel;
     }
 
     // SFX Audio Level
@@ -94,8 +134,16 @@ public class AudioManager : MonoBehaviour
     public void SetSFXAudioLevel(float newSFXAudioLevel)
     {
         SFXAudioLevel = newSFXAudioLevel;
+
+        PlayerPrefs.SetFloat("SFXAudioLevel", SFXAudioLevel);
+
         audioMixer.SetFloat("Volume-SFX", RangeToDb(SFXAudioLevel));
         OnSFXAudioLevelChanged.Invoke(SFXAudioLevel);
+    }
+
+    public float GetSFXAudioLevel()
+    {
+        return SFXAudioLevel;
     }
 
     // Helper methods

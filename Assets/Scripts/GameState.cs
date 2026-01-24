@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -25,19 +26,29 @@ public class GameState : MonoBehaviour
         switch (gameState)
         {
             case GameStateEnum.StartScreen:
+                enemySpawner.ResetDificultyLevel();
+                gameOverPanel.SetActive(false);
+                vignete.SetActive(true);
+                player.ResetCharacterPosition();
+                SetPoints(0);
+                ResetGameTime();
+                player.gameObject.GetComponent<CharacterStats>().SetCharacterHealth(1);
+                openSettingsButton.SetActive(true);
                 break;
 
             case GameStateEnum.Game:
-                gameOverPanel.SetActive(false);
+                vignete.SetActive(false);
                 break;
 
             case GameStateEnum.LoseScreen:
                 bWasFirstSwipeDetected = false;
+                vignete.SetActive(true);
                 openSettingsButton.SetActive(false);
                 gameOverPanel.SetActive(true);
                 break;
 
             case GameStateEnum.SettingsScreen:
+                vignete.SetActive(true);
                 settingsScreenPanel.SetActive(true);
                 break;
         }
@@ -45,11 +56,14 @@ public class GameState : MonoBehaviour
     }
 
 
-
+    private EnemySpawner enemySpawner;
     private void Awake()
     {
         SwipeDetection swipeDetection = GetComponent<SwipeDetection>();
         swipeDetection.swipePerformed.AddListener(FirstSwipeDetected);
+        swipeDetection.pressPerformed.AddListener(PressDetected);
+
+        enemySpawner = GetComponent<EnemySpawner>();
     }
 
     bool bWasFirstSwipeDetected = false;
@@ -80,10 +94,20 @@ public class GameState : MonoBehaviour
         settingsScreenPanel.SetActive(false);
     }
 
+    private void PressDetected()
+    {
+        if (gameState == GameStateEnum.LoseScreen)
+        {
+            SetGameState (GameStateEnum.StartScreen);
+        }
+    }
+
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject settingsScreenPanel;
     [SerializeField] GameObject openSettingsButton;
     [SerializeField] GameObject closeSettingsButton;
+    [SerializeField] GameObject vignete;
+    [SerializeField] CharacterMovement player;
 
 
     private float GameTime = 0;
@@ -91,6 +115,11 @@ public class GameState : MonoBehaviour
     public float GetGameTime()
     {
         return GameTime;
+    }
+
+    private void ResetGameTime()
+    {
+        GameTime = 0;
     }
 
     private void FixedUpdate()
@@ -113,6 +142,12 @@ public class GameState : MonoBehaviour
     }
 
     private int points;
+    [SerializeField] TextMeshPro pointsText;
+    private void SetPoints(int points)
+    {
+        this.points = points;
+        pointsText.text = points.ToString();
+    }
 
     public UnityEvent pointsIncreased;
     public void increasePoints(int _points)

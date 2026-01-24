@@ -185,7 +185,7 @@ Transform:
   m_LocalScale: {x: 0.556119, y: 0.9873239, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 809886698}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &106658003
 SpriteRenderer:
@@ -1137,6 +1137,17 @@ MeshRenderer:
   m_SortingOrder: 11
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &358055189 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3419872439794818571, guid: cb80737977c66444ca2399c6f0f4d9ac, type: 3}
+  m_PrefabInstance: {fileID: 2455598685170766670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665a2b50ccba1a46ab48dd0aa673c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &392360400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,15 +1198,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -516500337351641339, guid: 0e8fda970c698324287ff79efd26ddb9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1471,15 +1482,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -516500337351641339, guid: 0e8fda970c698324287ff79efd26ddb9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1719,15 +1730,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -516500337351641339, guid: 0e8fda970c698324287ff79efd26ddb9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1984,7 +1995,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 106658002}
   - {fileID: 356484259}
   - {fileID: 175795367}
   - {fileID: 331704107}
@@ -2402,7 +2412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 151, y: 296}
+  m_AnchoredPosition: {x: 143.1, y: 285.69995}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1402662754
@@ -2952,7 +2962,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 151, y: 296}
+  m_AnchoredPosition: {x: 143.1, y: 285.7}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560465262
@@ -3612,7 +3622,7 @@ Transform:
   m_GameObject: {fileID: 1761403700}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -53.9, z: 0}
+  m_LocalPosition: {x: 0, y: -33.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3770,6 +3780,7 @@ GameObject:
   - component: {fileID: 1875219975}
   - component: {fileID: 1875219978}
   - component: {fileID: 1875219977}
+  - component: {fileID: 1875219979}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -3905,11 +3916,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2ec31835979b79e4ca97e0aee034e8bd, type: 3}
   - {fileID: 8300000, guid: 07e00b890ca49cb448e8bd5ccc65cbb6, type: 3}
   - {fileID: 8300000, guid: 4961a2288c1d9494ca3bb7e06fc84857, type: 3}
-  enemiesOn0: []
-  enemiesOn1: []
-  enemiesOn2: []
-  enemiesOn3: []
-  enemiesOn4: []
 --- !u!114 &1875219976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3931,6 +3937,9 @@ MonoBehaviour:
   settingsScreenPanel: {fileID: 1546345631}
   openSettingsButton: {fileID: 1560465260}
   closeSettingsButton: {fileID: 1402662752}
+  vignete: {fileID: 106658001}
+  player: {fileID: 358055189}
+  pointsText: {fileID: 1568548624}
   pointsIncreased:
     m_PersistentCalls:
       m_Calls: []
@@ -4056,6 +4065,23 @@ MonoBehaviour:
   OnSFXAudioLevelChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1875219979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875219971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d0fbc2828fa57428670654e9ddb6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  audioManager: {fileID: 1875219978}
+  MuteCheckbox: {fileID: 628666765}
+  MasterSlider: {fileID: 1404734676}
+  MusicSlider: {fileID: 1877357156}
+  SFXSlider: {fileID: 276873630}
 --- !u!1 &1877357154
 GameObject:
   m_ObjectHideFlags: 0
@@ -4209,7 +4235,7 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -4229,7 +4255,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -4752,5 +4778,6 @@ SceneRoots:
   - {fileID: 1495353917}
   - {fileID: 877611148}
   - {fileID: 270737337}
+  - {fileID: 106658002}
   - {fileID: 809886698}
   - {fileID: 1884720390}

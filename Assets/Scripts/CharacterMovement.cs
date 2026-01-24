@@ -34,52 +34,66 @@ public class CharacterMovement : MonoBehaviour
         gameState.setPlayerPositionIndex(positionIndex);
     }
 
+    public void ResetCharacterPosition()
+    {
+        for (int i = 0; i < HorizontalSnapPoints.Length; i++)
+        {
+            Move(new Vector2(-1, 0));
+        }
+        Move(new Vector2(1, 0));
+        Move(new Vector2(1, 0));
+    }
+
     void Move(Vector2 Direction)
     {
-        if (Direction.x > 0)
+        if (gameState.gameState == GameState.GameStateEnum.Game || gameState.gameState == GameState.GameStateEnum.StartScreen)
         {
-            if (positionIndex + 1 < HorizontalSnapPoints.Length)
+
+            if (Direction.x > 0)
             {
-                // In the future this will play the move animation
-                Vector3 currPos = gameObject.transform.position;
-                Vector3 nextPos = new(HorizontalSnapPoints[positionIndex + 1].x, currPos.y, currPos.z);
-                gameObject.transform.position = nextPos;
-                positionIndex++;
+                if (positionIndex + 1 < HorizontalSnapPoints.Length)
+                {
+                    // In the future this will play the move animation
+                    Vector3 currPos = gameObject.transform.position;
+                    Vector3 nextPos = new(HorizontalSnapPoints[positionIndex + 1].x, currPos.y, currPos.z);
+                    gameObject.transform.position = nextPos;
+                    positionIndex++;
+                }
+                else
+                {
+                    // In the future this will play the bounds bounce animation
+                    return;
+                }
             }
-            else
+
+            else if (Direction.x < 0)
             {
-                // In the future this will play the bounds bounce animation
+                if (positionIndex - 1 != -1)
+                {
+                    // In the future this will play the move animation
+                    Vector3 currPos = gameObject.transform.position;
+                    Vector3 nextPos = new(HorizontalSnapPoints[positionIndex - 1].x, currPos.y, currPos.z);
+                    gameObject.transform.position = nextPos;
+                    positionIndex--;
+                }
+                else
+                {
+                    // In the future this will play the bounds bounce animation
+                    return;
+                }
+            }
+
+            gameState.setPlayerPositionIndex(positionIndex);
+
+            if (Direction.x == 0)
+            {
                 return;
             }
+
+            Debug.Log("Current character position index:" + positionIndex);
+
         }
-
-        else if (Direction.x < 0)
-        {
-            if (positionIndex - 1 != -1)
-            {
-                // In the future this will play the move animation
-                Vector3 currPos = gameObject.transform.position;
-                Vector3 nextPos = new(HorizontalSnapPoints[positionIndex - 1].x, currPos.y, currPos.z);
-                gameObject.transform.position = nextPos;
-                positionIndex--;
-            }
-            else
-            {
-                // In the future this will play the bounds bounce animation
-                return;
-            }
         }
-
-        gameState.setPlayerPositionIndex(positionIndex);
-
-        if (Direction.x == 0)
-        {
-            return;
-        }
-
-        Debug.Log("Current character position index:" + positionIndex);
-
-    }
 
 
 

@@ -5,7 +5,7 @@ public class CharacterStats : MonoBehaviour
 {
     [SerializeField] private int CharacterHealth;
 
-    private void SetCharacterHealth(int characterHealth)
+    public void SetCharacterHealth(int characterHealth)
     {
         CharacterHealth = characterHealth;
         if (CharacterHealth == 0)
@@ -24,9 +24,11 @@ public class CharacterStats : MonoBehaviour
         SetCharacterHealth(CharacterHealth + 1);
     }
 
+
+
     private void Die()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
         GameObject.Find("Systems").GetComponent<GameState>().SetGameState(GameState.GameStateEnum.LoseScreen);
 
 

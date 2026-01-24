@@ -19,7 +19,7 @@ public class SwipeDetection : MonoBehaviour
     {
         position.Enable();
         press.Enable();
-        press.performed += _ => { startPos = currentPos; Debug.Log("Press performed at pos " + currentPos); };
+        press.performed += _ => { startPos = currentPos; Debug.Log("Press performed at pos " + currentPos); pressPerformed.Invoke(); };
         press.canceled += _ => { DetectSwipe(); Debug.Log("Press canceled at pos " + currentPos); };
         instance = this;
     }

@@ -21,13 +21,14 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] AudioClip[] availableAudioClips;
 
-    private List<GameObject> deadEnemies;
+    private List<GameObject> allEnemies = new List<GameObject>();
+    private List<GameObject> deadEnemies = new List<GameObject>();
 
-    [SerializeField] private List<GameObject> enemiesOn0 = new();
-    [SerializeField] private List<GameObject> enemiesOn1 = new();
-    [SerializeField] private List<GameObject> enemiesOn2 = new();
-    [SerializeField] private List<GameObject> enemiesOn3 = new();
-    [SerializeField] private List<GameObject> enemiesOn4 = new();
+    private List<GameObject> enemiesOn0 = new();
+    private List<GameObject> enemiesOn1 = new();
+    private List<GameObject> enemiesOn2 = new();
+    private List<GameObject> enemiesOn3 = new();
+    private List<GameObject> enemiesOn4 = new();
 
     private List<GameObject>[] enemiesBySpawnPoint;
 
@@ -50,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
             GameObject createdEnemy = Instantiate(
                 enemyPrefab,
@@ -60,6 +61,7 @@ public class EnemySpawner : MonoBehaviour
 
             createdEnemy.GetComponent<EnemyMovement>().SetGameState(gameState);
             //createdEnemy.SetActive(false);
+            allEnemies.Add(createdEnemy);
             deadEnemies.Add(createdEnemy);
         }
     }
@@ -82,6 +84,19 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy();
             timeSinceLastSpawn = 0f;
         }
+    }
+
+    public void ResetDificultyLevel()
+    {
+        foreach (GameObject enemy in allEnemies)
+        {
+            enemy.transform.position = new Vector3(100, 100, 100);
+            enemy.GetComponent<AudioSource>().Stop();
+            EnemyDied(enemy);
+        }
+        SpawnRate = InitialSpawnRate;
+        timeSinceLastSpawn = 0;
+        dificultyLevel = 0;
     }
 
     public void SpawnEnemy()

@@ -63,15 +63,25 @@ public class EnemyMovement : MonoBehaviour
                 GetComponent<Collider2D>().enabled = false;
                 StartCoroutine(WaitToEnableCollision());
                 Instantiate(PointsGO, transform.position, Quaternion.identity);
+                
+                
             }
             if (collision.CompareTag("Character"))
             {
                 collision.GetComponent<CharacterStats>().ReduceCharacterHealth();
-                Instantiate(ExplosionGO, transform.position, Quaternion.identity);
+                GameObject explosion = Instantiate(ExplosionGO, transform.position, Quaternion.identity);
+                explosion.GetComponent<Animator>().SetTrigger("Explotar");
+                StartCoroutine(DestruirESPLOSION(explosion));
             }
 
         }
 
+    }
+
+    private IEnumerator DestruirESPLOSION(GameObject ESPLOSION)
+    {
+        yield return new WaitForSeconds(.75f);
+        GameObject.Destroy(ESPLOSION);
     }
 
 
