@@ -14,12 +14,14 @@ public class RetrievePoints : MonoBehaviour
     GameState gameState;
     GameManager gameManager;
 
+    public bool bIsCloseCall;
+
     void Start()
     {
         gameState = GameObject.Find("Systems").GetComponent<GameState>();
         gameManager = GameObject.Find("Systems").GetComponent<GameManager>();
 
-        enemyDodgePoints = gameManager.enemyDodgePoints;
+        enemyDodgePoints = bIsCloseCall ? gameManager.enemyCloseCallDodgePoints : gameManager.enemyDodgePoints;
 
         TMP = GetComponent<TextMeshPro>();
         TMP.text = enemyDodgePoints.ToString();

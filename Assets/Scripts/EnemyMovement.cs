@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     private float enemySpeed;
     [SerializeField] private GameObject PointsGO;
     [SerializeField] private GameObject ExplosionGO;
+    private bool bNextPointIsCloseCall = false;
 
     public float getEnemySpeed()
     {
@@ -40,12 +41,14 @@ public class EnemyMovement : MonoBehaviour
         {
             //gameObject.SetActive(false);
             EnemyDied.Invoke(gameObject);
+            bNextPointIsCloseCall = false;
         }
         else
         {
             //gameObject.SetActive(true);
             gameObject.GetComponent<Collider2D>().enabled = true;
             RandomizeEnemySpeed();
+            bNextPointIsCloseCall = false;
         }
 
     }
@@ -58,13 +61,19 @@ public class EnemyMovement : MonoBehaviour
             {
                 SetIsAlive(false);
             }
+            if (collision.CompareTag("CloseCall"))
+            {
+                bNextPointIsCloseCall = true;
+            }
             if (collision.CompareTag("PointsEnd"))
             {
                 GetComponent<Collider2D>().enabled = false;
                 StartCoroutine(WaitToEnableCollision());
-                Instantiate(PointsGO, transform.position, Quaternion.identity);
-                
-                
+                GameObject points = Instantiate(PointsGO, transform.position, Quaternion.identity);
+                points.GetComponent<RetrievePoints>().bIsCloseCall = bNextPointIsCloseCall;
+                bNextPointIsCloseCall = false;
+
+                                
             }
             if (collision.CompareTag("Character"))
             {
@@ -102,7 +111,7 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator WaitToEnableCollision()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         GetComponent<Collider2D>().enabled = true;
     }
 

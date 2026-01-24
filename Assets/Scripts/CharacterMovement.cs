@@ -17,6 +17,8 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector3Int[] HorizontalSnapPoints;
 
+    private GameObject parent;
+
     private void Awake()
     {
         gameManager = Systems.GetComponent<GameManager>();
@@ -26,11 +28,12 @@ public class CharacterMovement : MonoBehaviour
         HorizontalSnapPoints = gameManager.GetHorizontalSnapPositions();
 
         swipeDetection.swipePerformed.AddListener(Move);
+        parent = gameObject.transform.parent.gameObject;
     }
 
     void Start()
     {
-        gameObject.transform.position = startPosition;
+        parent.transform.position = startPosition;
         gameState.setPlayerPositionIndex(positionIndex);
     }
 
@@ -54,9 +57,9 @@ public class CharacterMovement : MonoBehaviour
                 if (positionIndex + 1 < HorizontalSnapPoints.Length)
                 {
                     // In the future this will play the move animation
-                    Vector3 currPos = gameObject.transform.position;
+                    Vector3 currPos = parent.transform.position;
                     Vector3 nextPos = new(HorizontalSnapPoints[positionIndex + 1].x, currPos.y, currPos.z);
-                    gameObject.transform.position = nextPos;
+                    parent.transform.position = nextPos;
                     positionIndex++;
                 }
                 else
@@ -71,9 +74,9 @@ public class CharacterMovement : MonoBehaviour
                 if (positionIndex - 1 != -1)
                 {
                     // In the future this will play the move animation
-                    Vector3 currPos = gameObject.transform.position;
+                    Vector3 currPos = parent.transform.position;
                     Vector3 nextPos = new(HorizontalSnapPoints[positionIndex - 1].x, currPos.y, currPos.z);
-                    gameObject.transform.position = nextPos;
+                    parent.transform.position = nextPos;
                     positionIndex--;
                 }
                 else

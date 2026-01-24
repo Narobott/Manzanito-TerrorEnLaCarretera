@@ -34,10 +34,12 @@ public class GameState : MonoBehaviour
                 ResetGameTime();
                 player.gameObject.GetComponent<CharacterStats>().SetCharacterHealth(1);
                 openSettingsButton.SetActive(true);
+                startGamePannel.SetActive(true);
                 break;
 
             case GameStateEnum.Game:
                 vignete.SetActive(false);
+                startGamePannel.SetActive(false);
                 break;
 
             case GameStateEnum.LoseScreen:
@@ -50,6 +52,7 @@ public class GameState : MonoBehaviour
             case GameStateEnum.SettingsScreen:
                 vignete.SetActive(true);
                 settingsScreenPanel.SetActive(true);
+                startGamePannel.SetActive(false);
                 break;
         }
 
@@ -64,6 +67,8 @@ public class GameState : MonoBehaviour
         swipeDetection.pressPerformed.AddListener(PressDetected);
 
         enemySpawner = GetComponent<EnemySpawner>();
+
+        SetGameState(GameStateEnum.StartScreen);
     }
 
     bool bWasFirstSwipeDetected = false;
@@ -104,6 +109,7 @@ public class GameState : MonoBehaviour
 
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject settingsScreenPanel;
+    [SerializeField] GameObject startGamePannel;
     [SerializeField] GameObject openSettingsButton;
     [SerializeField] GameObject closeSettingsButton;
     [SerializeField] GameObject vignete;

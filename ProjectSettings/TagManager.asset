@@ -8,6 +8,7 @@ TagManager:
   - Character
   - DeadEnd
   - PointsEnd
+  - CloseCall
   layers:
   - Default
   - TransparentFX
