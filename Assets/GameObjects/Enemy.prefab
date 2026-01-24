@@ -744,7 +744,7 @@ PrefabInstance:
       addedObject: {fileID: 9001091999025484666}
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: a1107efee1f686445994ac747739e056, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5669417441302141159}
+      addedObject: {fileID: 3106686372002937476}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: a1107efee1f686445994ac747739e056, type: 3}
 --- !u!4 &430120615026900467 stripped
 Transform:
@@ -783,7 +783,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5669417441302141159
+--- !u!114 &3106686372002937476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -802,8 +802,6 @@ MonoBehaviour:
   m_Weight: 1
   m_AlwaysUpdate: 1
   m_SolverEditorData:
-  - color: {r: 0, g: 1, b: 0, a: 1}
-    showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
