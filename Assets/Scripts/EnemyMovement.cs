@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     private GameState gameState;
     private float enemySpeed;
     [SerializeField] private GameObject PointsGO;
+    [SerializeField] private GameObject ExplosionGO;
 
     public float getEnemySpeed()
     {
@@ -61,6 +62,19 @@ public class EnemyMovement : MonoBehaviour
             StartCoroutine(WaitToEnableCollision());
             Instantiate(PointsGO, transform.position, Quaternion.identity);
         }
+        if (collision.CompareTag("Character"))
+        {
+            collision.GetComponent<CharacterStats>().ReduceCharacterHealth();
+            Instantiate(ExplosionGO, transform.position, Quaternion.identity);
+        }
+
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision");
+
     }
 
 

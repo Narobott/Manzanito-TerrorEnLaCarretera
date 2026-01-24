@@ -57,6 +57,7 @@ public class EnemySpawner : MonoBehaviour
             );
 
             createdEnemy.GetComponent<EnemyMovement>().SetGameState(gameState);
+            createdEnemy.SetActive(false);
             deadEnemies.Add(createdEnemy);
         }
     }
@@ -130,7 +131,7 @@ public class EnemySpawner : MonoBehaviour
 
         enemiesOnPoint.Add(enemy);
 
-        Debug.Log("Enemy spawned at position " + enemySpawnPosition);
+        Debug.Log("Enemy spawned at position " + spawnPointIndex);
         enemySpawned.Invoke();
     }
 
