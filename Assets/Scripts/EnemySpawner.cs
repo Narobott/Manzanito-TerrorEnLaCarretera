@@ -18,6 +18,8 @@ public class EnemySpawner : MonoBehaviour
     private float SpawnRate;
     private float timeSinceLastSpawn;
     private int dificultyLevel;
+    private int prevSpawnPosition = 6;
+    private int timesSameSpawnPosition = 0;
 
     [SerializeField] AudioClip[] availableAudioClips;
 
@@ -114,6 +116,27 @@ public class EnemySpawner : MonoBehaviour
         else
             spawnPointIndex = gameState.getPlayerPositionIndex();
 
+        if (prevSpawnPosition == spawnPointIndex)
+        {
+            timesSameSpawnPosition++;
+
+            for (int i = 0; i < timesSameSpawnPosition; i++)
+            {
+                playerFocusChance = Random.Range(i, 10);
+                if (playerFocusChance < 6)
+                    spawnPointIndex = Random.Range(0, spawnPoints.Length);
+                else
+                    spawnPointIndex = gameState.getPlayerPositionIndex();
+                if (spawnPointIndex != prevSpawnPosition)
+                {
+                    timesSameSpawnPosition = 0;
+                    break;
+                }
+            }
+        }
+
+        prevSpawnPosition = spawnPointIndex;
+
         Vector3 enemySpawnPosition = new(
             spawnPoints[spawnPointIndex].x,
             11,
@@ -151,6 +174,7 @@ public class EnemySpawner : MonoBehaviour
 
         enemiesOnPoint.Add(enemy);
 
+
         Debug.Log("Enemy spawned at position " + spawnPointIndex);
         enemySpawned.Invoke();
     }
@@ -164,5 +188,8 @@ public class EnemySpawner : MonoBehaviour
             bool bRemoved = enemiesBySpawnPoint[i].Remove(enemyDied);
             if (bRemoved) break;
         }
+
+        enemyDied.transform.position = new Vector3(100, 100, 100);
+
     }
 }

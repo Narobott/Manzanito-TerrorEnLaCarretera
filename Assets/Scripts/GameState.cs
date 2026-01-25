@@ -148,6 +148,7 @@ public class GameState : MonoBehaviour
     }
 
     private int points;
+    [SerializeField] AudioSource pointsAudioSource;
     [SerializeField] TextMeshPro pointsText;
     private void SetPoints(int points)
     {
@@ -172,6 +173,8 @@ public class GameState : MonoBehaviour
         {
             PlayerPrefs.SetInt("SavedHighScore", this.points);
         }
+
+        pointsAudioSource.Play();
     }
     public int getPoints()
     {

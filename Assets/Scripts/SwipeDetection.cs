@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +9,7 @@ public class SwipeDetection : MonoBehaviour
     public static SwipeDetection instance;
     public UnityEvent<Vector2> swipePerformed;
     public UnityEvent pressPerformed;
-    [SerializeField] private InputAction position, press, move;
+    [SerializeField] private InputAction position, press, move, parry;
 
     [SerializeField] private float swipeResistance = 100;
     private Vector2 startPos;
@@ -19,9 +20,11 @@ public class SwipeDetection : MonoBehaviour
         position.Enable();
         press.Enable();
         move.Enable();
+        parry.Enable();
         press.performed += _ => { startPos = currentPos; Debug.Log("Press performed at pos " + currentPos); pressPerformed.Invoke(); };
         press.canceled += _ => { DetectSwipe(); Debug.Log("Press canceled at pos " + currentPos); };
         move.performed += _ => { swipePerformed.Invoke(new Vector2(move.ReadValue<float>(), 0)); };
+        parry.performed += _ => { swipePerformed.Invoke(new Vector2(0, 1)); };
         instance = this;
     }
 

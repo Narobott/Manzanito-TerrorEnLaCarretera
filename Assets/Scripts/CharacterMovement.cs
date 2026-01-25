@@ -19,6 +19,24 @@ public class CharacterMovement : MonoBehaviour
 
     private GameObject parent;
 
+    private bool bCanParry;
+    [SerializeField] private GameObject ParryParticles;
+
+    public void SetCanParry(bool canParry)
+    {
+        bCanParry = canParry;
+        if(bCanParry)
+        {
+            ParryParticles.SetActive(true);
+        }
+        else
+        {
+            ParryParticles.SetActive(false);
+        }
+    }
+
+    public bool bIsParryMode;
+
     private void Awake()
     {
         gameManager = Systems.GetComponent<GameManager>();
@@ -45,44 +63,54 @@ public class CharacterMovement : MonoBehaviour
         }
         Move(new Vector2(1, 0));
         Move(new Vector2(1, 0));
+        SetCanParry(false);
     }
 
     void Move(Vector2 Direction)
     {
         if (gameState.gameState == GameState.GameStateEnum.Game || gameState.gameState == GameState.GameStateEnum.StartScreen)
         {
-
-            if (Direction.x > 0)
+            if (Mathf.Abs(Direction.x) > Mathf.Abs(Direction.y))
             {
-                if (positionIndex + 1 < HorizontalSnapPoints.Length)
+                if (Direction.x > 0)
                 {
-                    // In the future this will play the move animation
-                    Vector3 currPos = parent.transform.position;
-                    Vector3 nextPos = new(HorizontalSnapPoints[positionIndex + 1].x, currPos.y, currPos.z);
-                    parent.transform.position = nextPos;
-                    positionIndex++;
+                    if (positionIndex + 1 < HorizontalSnapPoints.Length)
+                    {
+                        // In the future this will play the move animation
+                        Vector3 currPos = parent.transform.position;
+                        Vector3 nextPos = new(HorizontalSnapPoints[positionIndex + 1].x, currPos.y, currPos.z);
+                        parent.transform.position = nextPos;
+                        positionIndex++;
+                    }
+                    else
+                    {
+                        // In the future this will play the bounds bounce animation
+                        return;
+                    }
                 }
-                else
+
+                else if (Direction.x < 0)
                 {
-                    // In the future this will play the bounds bounce animation
-                    return;
+                    if (positionIndex - 1 != -1)
+                    {
+                        // In the future this will play the move animation
+                        Vector3 currPos = parent.transform.position;
+                        Vector3 nextPos = new(HorizontalSnapPoints[positionIndex - 1].x, currPos.y, currPos.z);
+                        parent.transform.position = nextPos;
+                        positionIndex--;
+                    }
+                    else
+                    {
+                        // In the future this will play the bounds bounce animation
+                        return;
+                    }
                 }
             }
-
-            else if (Direction.x < 0)
+            else if (Mathf.Abs(Direction.x) < Mathf.Abs(Direction.y))
             {
-                if (positionIndex - 1 != -1)
+                if (bCanParry)
                 {
-                    // In the future this will play the move animation
-                    Vector3 currPos = parent.transform.position;
-                    Vector3 nextPos = new(HorizontalSnapPoints[positionIndex - 1].x, currPos.y, currPos.z);
-                    parent.transform.position = nextPos;
-                    positionIndex--;
-                }
-                else
-                {
-                    // In the future this will play the bounds bounce animation
-                    return;
+                    Parry();
                 }
             }
 
@@ -96,7 +124,13 @@ public class CharacterMovement : MonoBehaviour
             Debug.Log("Current character position index:" + positionIndex);
 
         }
-        }
+    }
+
+    private void Parry()
+    {
+        GetComponent<Animator>().SetTrigger("Parry");
+        SetCanParry(false);
+    }
 
 
 

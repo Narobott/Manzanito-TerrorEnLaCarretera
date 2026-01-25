@@ -14,14 +14,39 @@ public class RetrievePoints : MonoBehaviour
     GameState gameState;
     GameManager gameManager;
 
-    public bool bIsCloseCall;
+    private bool bIsCloseCall;
+    private bool bIsParry;
+
+    public void SetIsCloseCall(bool isCloseCall)
+    {
+        this.bIsCloseCall = isCloseCall;
+        if (isCloseCall )
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
+    public void SetIsParry(bool isParry)
+    {
+        this.bIsParry = isParry;
+    }
 
     void Start()
     {
         gameState = GameObject.Find("Systems").GetComponent<GameState>();
         gameManager = GameObject.Find("Systems").GetComponent<GameManager>();
 
-        enemyDodgePoints = bIsCloseCall ? gameManager.enemyCloseCallDodgePoints : gameManager.enemyDodgePoints;
+        enemyDodgePoints = gameManager.enemyDodgePoints;
+
+        if (bIsCloseCall)
+        {
+            enemyDodgePoints = gameManager.enemyCloseCallDodgePoints;
+        }
+
+        if (bIsParry)
+        {
+            enemyDodgePoints = gameManager.parryPoints;
+        }
 
         TMP = GetComponent<TextMeshPro>();
         TMP.text = enemyDodgePoints.ToString();

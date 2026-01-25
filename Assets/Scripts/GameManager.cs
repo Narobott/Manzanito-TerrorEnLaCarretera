@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public int enemyCloseCallDodgePoints = 500;
 
     [SerializeField]
+    public int parryPoints = 1000;
+
+    [SerializeField]
     public TextMeshPro PointsText;
 
     private void PlayPointsAnimation()

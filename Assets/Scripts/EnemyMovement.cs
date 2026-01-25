@@ -10,6 +10,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private GameObject ExplosionGO;
     private bool bNextPointIsCloseCall = false;
 
+
+    [SerializeField] AudioClip closeCallAudio;
+
+
     public float getEnemySpeed()
     {
         return enemySpeed;
@@ -27,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void RandomizeEnemySpeed(float maxSpeed = 0.75f)
     {
-        enemySpeed = Random.Range(0.2f, maxSpeed);
+        enemySpeed = Random.Range(0.35f, maxSpeed);
     }
 
     private bool bIsAlive = false;
@@ -41,7 +45,6 @@ public class EnemyMovement : MonoBehaviour
         {
             //gameObject.SetActive(false);
             EnemyDied.Invoke(gameObject);
-            bNextPointIsCloseCall = false;
         }
         else
         {
@@ -57,34 +60,55 @@ public class EnemyMovement : MonoBehaviour
     {
         if (gameState.gameState == GameState.GameStateEnum.Game)
         {
-            if(collision.CompareTag("DeadEnd"))
-            {
-                SetIsAlive(false);
-            }
             if (collision.CompareTag("CloseCall"))
             {
                 bNextPointIsCloseCall = true;
+            }
+            if (collision.CompareTag("Character"))
+            {
+                bNextPointIsCloseCall = false;
+                if (collision.GetComponent<CharacterMovement>().bIsParryMode)
+                {
+                    explosionar();
+                    GameObject points = Instantiate(PointsGO, transform.position, Quaternion.identity);
+                    points.GetComponent<RetrievePoints>().SetIsParry(true);
+                    SetIsAlive(false);
+
+                }
+                else
+                {
+                    collision.GetComponent<CharacterStats>().ReduceCharacterHealth();
+                    explosionar();
+                }
             }
             if (collision.CompareTag("PointsEnd"))
             {
                 GetComponent<Collider2D>().enabled = false;
                 StartCoroutine(WaitToEnableCollision());
                 GameObject points = Instantiate(PointsGO, transform.position, Quaternion.identity);
-                points.GetComponent<RetrievePoints>().bIsCloseCall = bNextPointIsCloseCall;
-                bNextPointIsCloseCall = false;
+                points.GetComponent<RetrievePoints>().SetIsCloseCall(bNextPointIsCloseCall);
+                if (bNextPointIsCloseCall)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(closeCallAudio);
+                    GameObject.Find("Character").GetComponentInChildren<CharacterMovement>().SetCanParry(true);
+                }
 
-                                
+                bNextPointIsCloseCall = false;               
             }
-            if (collision.CompareTag("Character"))
+            if(collision.CompareTag("DeadEnd"))
             {
-                collision.GetComponent<CharacterStats>().ReduceCharacterHealth();
-                GameObject explosion = Instantiate(ExplosionGO, transform.position, Quaternion.identity);
-                explosion.GetComponent<Animator>().SetTrigger("Explotar");
-                StartCoroutine(DestruirESPLOSION(explosion));
+                SetIsAlive(false);
             }
 
         }
 
+    }
+    private void explosionar()
+    {
+        GameObject explosion = Instantiate(ExplosionGO, transform.position, Quaternion.identity);
+        explosion.GetComponent<Animator>().SetTrigger("Explotar");
+        explosion.GetComponent<AudioSource>().Play();
+        StartCoroutine(DestruirESPLOSION(explosion));
     }
 
     private IEnumerator DestruirESPLOSION(GameObject ESPLOSION)
