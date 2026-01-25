@@ -9,6 +9,7 @@ TagManager:
   - DeadEnd
   - PointsEnd
   - CloseCall
+  - ParryTutorial
   layers:
   - Default
   - TransparentFX

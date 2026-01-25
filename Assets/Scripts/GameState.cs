@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameState : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class GameState : MonoBehaviour
                 player.ResetCharacterPosition();
                 SetPoints(0);
                 ResetGameTime();
+                enemySpawner.GameTime = 0;
                 player.gameObject.GetComponent<CharacterStats>().SetCharacterHealth(1);
                 openSettingsButton.SetActive(true);
                 startGamePannel.SetActive(true);
@@ -50,6 +52,13 @@ public class GameState : MonoBehaviour
                 vignete.SetActive(true);
                 openSettingsButton.SetActive(false);
                 gameOverPanel.SetActive(true);
+
+                if(PlayerPrefs.HasKey("ShowParryTutorial"))
+                {
+                    PlayerPrefs.DeleteKey("HasPlayerEverParried");
+                    player.bHasPlayerEverParried = false;
+                }
+
                 break;
 
             case GameStateEnum.SettingsScreen:
@@ -58,8 +67,16 @@ public class GameState : MonoBehaviour
                 startGamePannel.SetActive(false);
                 break;
 
+            case GameStateEnum.ParryTutorial:
+                vignete.SetActive(true);
+                parryTutorialPanel.SetActive(true);
+                player.SetCanParry(true);
+                player.bHasPlayerEverParried = true;
+                break;
+
             case GameStateEnum.ImpactFrame:
-                StartCoroutine(fullscreenEffectsManager.InvokeImpactFrame(prevGameState));
+                StartCoroutine(fullscreenEffectsManager.InvokeImpactFrame());
+                RemoveParryTutorial();
                 break;
         }
 
@@ -77,6 +94,10 @@ public class GameState : MonoBehaviour
         enemySpawner = GetComponent<EnemySpawner>();
 
         SetGameState(GameStateEnum.StartScreen);
+
+        PlayerPrefs.DeleteKey("HasPlayerEverParried");
+        ShowParryTutorialToggle.isOn = PlayerPrefs.HasKey("ShowParryTutorial");
+
     }
 
     bool bWasFirstSwipeDetected = false;
@@ -88,6 +109,14 @@ public class GameState : MonoBehaviour
             SetGameState(GameStateEnum.Game);
             bWasFirstSwipeDetected= true;
         }
+    }
+    private void RemoveParryTutorial()
+    {
+
+        parryTutorialPanel.SetActive(false);
+        vignete.SetActive(false);
+        PlayerPrefs.SetInt("HasPlayerEverParried", 0);
+
     }
 
     public GameStateEnum prevGameState;
@@ -118,10 +147,17 @@ public class GameState : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject settingsScreenPanel;
     [SerializeField] GameObject startGamePannel;
+    [SerializeField] GameObject parryTutorialPanel;
     [SerializeField] GameObject openSettingsButton;
     [SerializeField] GameObject closeSettingsButton;
     [SerializeField] GameObject vignete;
     [SerializeField] CharacterMovement player;
+    [SerializeField] Toggle ShowParryTutorialToggle;
+
+    [SerializeField] public TextMeshPro SpawnRate;
+    [SerializeField] public TextMeshPro TimeSinceLastSpawn;
+    [SerializeField] public TextMeshPro DificultyLevel;
+    [SerializeField] public TextMeshPro GameStateText;
 
 
     private float GameTime = 0;
@@ -136,13 +172,6 @@ public class GameState : MonoBehaviour
         GameTime = 0;
     }
 
-    private void FixedUpdate()
-    {
-        if ( gameState.Equals(GameStateEnum.Game))
-        {
-            GameTime += Time.fixedDeltaTime;
-        }
-    }
 
     private int playerPositionIndex;
 
@@ -187,6 +216,22 @@ public class GameState : MonoBehaviour
     public int getPoints()
     {
         return points;
+    }
+
+    public void ShowParryTutorial(bool showParryTutorial)
+    {
+        if (showParryTutorial)
+        {
+            PlayerPrefs.SetInt("ShowParryTutorial", 1);
+            PlayerPrefs.DeleteKey("HasPlayerEverParried");
+            player.bHasPlayerEverParried = false;
+        }
+        else
+        {
+            PlayerPrefs.DeleteKey("ShowParryTutorial");
+            PlayerPrefs.SetInt("HasPlayerEverParried", 1);
+            player.bHasPlayerEverParried = true;
+        }
     }
 
 }

@@ -14,11 +14,11 @@ public class FullscreenEffectsManager : MonoBehaviour
         _fullscreenImpactFrame.SetActive(false);
     }
 
-    public IEnumerator InvokeImpactFrame(GameStateEnum prevState)
+    public IEnumerator InvokeImpactFrame()
     {
         _fullscreenImpactFrame.SetActive(true);
         yield return new WaitForSeconds(.2f);
         _fullscreenImpactFrame.SetActive(false);
-        _gameState.SetGameState(prevState);
+        _gameState.SetGameState(GameStateEnum.Game);
     }
 }

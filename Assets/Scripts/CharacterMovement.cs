@@ -22,6 +22,8 @@ public class CharacterMovement : MonoBehaviour
     private bool bCanParry;
     [SerializeField] private GameObject ParryParticles;
 
+    public bool bHasPlayerEverParried = false;
+
     public void SetCanParry(bool canParry)
     {
         bCanParry = canParry;
@@ -47,6 +49,11 @@ public class CharacterMovement : MonoBehaviour
 
         swipeDetection.swipePerformed.AddListener(Move);
         parent = gameObject.transform.parent.gameObject;
+
+        if (PlayerPrefs.HasKey("HasPlayerEverParried"))
+        {
+            bHasPlayerEverParried = true;
+        }
     }
 
     void Start()
@@ -70,7 +77,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (gameState.gameState == GameState.GameStateEnum.Game || gameState.gameState == GameState.GameStateEnum.StartScreen)
         {
-            if (Mathf.Abs(Direction.x) > Mathf.Abs(Direction.y))
+            if (Mathf.Abs(Direction.x) > Mathf.Abs(Direction.y) )
             {
                 if (Direction.x > 0)
                 {
@@ -114,22 +121,40 @@ public class CharacterMovement : MonoBehaviour
                 }
             }
 
-            gameState.setPlayerPositionIndex(positionIndex);
-
-            if (Direction.x == 0)
-            {
-                return;
-            }
-
-            Debug.Log("Current character position index:" + positionIndex);
-
         }
+
+        // Parry tutorial thing
+        if (gameState.gameState == GameState.GameStateEnum.ParryTutorial && Mathf.Abs(Direction.x) < Mathf.Abs(Direction.y))
+        {
+            if (bCanParry)
+            {
+                Parry();
+            }
+        }
+
+        gameState.setPlayerPositionIndex(positionIndex);
+
+        if (Direction.x == 0)
+        {
+            return;
+        }
+
+        Debug.Log("Current character position index:" + positionIndex);
     }
 
     private void Parry()
     {
         GetComponent<Animator>().SetTrigger("Parry");
         SetCanParry(false);
+    }
+
+    public void CheckForParryTutorial()
+    {
+        if (!bHasPlayerEverParried && bCanParry)
+        {
+            gameState.SetGameState(GameState.GameStateEnum.ParryTutorial);
+        }
+
     }
 
 

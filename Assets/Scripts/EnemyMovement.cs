@@ -13,6 +13,11 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] AudioClip closeCallAudio;
 
+    private bool bIsAlive = false;
+
+    public UnityEvent<GameObject> EnemyDied;
+
+
 
     public float getEnemySpeed()
     {
@@ -34,9 +39,6 @@ public class EnemyMovement : MonoBehaviour
         enemySpeed = Random.Range(0.35f, maxSpeed);
     }
 
-    private bool bIsAlive = false;
-
-    public UnityEvent<GameObject> EnemyDied;
 
     public void SetIsAlive(bool bAlive)
     {
@@ -58,11 +60,15 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameState.gameState == GameState.GameStateEnum.Game)
+        if (gameState.gameState == GameState.GameStateEnum.Game || gameState.gameState == GameState.GameStateEnum.ParryTutorial)
         {
             if (collision.CompareTag("CloseCall"))
             {
                 bNextPointIsCloseCall = true;
+            }
+            if (collision.CompareTag("ParryTutorial"))
+            {
+                collision.gameObject.transform.parent.gameObject.GetComponentInChildren<CharacterMovement>().CheckForParryTutorial();
             }
             if (collision.CompareTag("Character"))
             {

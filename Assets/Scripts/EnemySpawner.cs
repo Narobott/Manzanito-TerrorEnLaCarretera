@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static GameState;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class EnemySpawner : MonoBehaviour
     private GameState gameState;
 
     public UnityEvent enemySpawned;
+
+    public float GameTime;
 
     [SerializeField] private int InitialSpawnRate;
     [SerializeField] private float DificultyRateMultiplier;
@@ -70,12 +74,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        if (gameState.gameState == GameStateEnum.Game)
+        {
+            GameTime += Time.fixedDeltaTime;
+        }
+
         if (gameState.gameState != GameState.GameStateEnum.Game)
             return;
 
-        timeSinceLastSpawn += Time.deltaTime;
+        timeSinceLastSpawn += Time.fixedDeltaTime;
 
-        dificultyLevel = Mathf.FloorToInt(gameState.GetGameTime() / 15f);
+        dificultyLevel = Mathf.FloorToInt(GameTime / 15f);
         SpawnRate = Mathf.Max(
             minSpawnRate,
             InitialSpawnRate - (DificultyRateMultiplier * dificultyLevel)
@@ -86,6 +96,11 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy();
             timeSinceLastSpawn = 0f;
         }
+
+        gameState.GameStateText.text = "Current game state: " + gameState.gameState.ToString();
+        gameState.SpawnRate.text = "Spawn rate: " + SpawnRate.ToString();
+        gameState.TimeSinceLastSpawn.text = "Time since last spawn: " + timeSinceLastSpawn.ToString();
+        gameState.DificultyLevel.text = "Dificulty level: " + GameTime.ToString() + " / 15 = " + dificultyLevel.ToString();
     }
 
     public void ResetDificultyLevel()
@@ -109,10 +124,10 @@ public class EnemySpawner : MonoBehaviour
         Vector3Int[] spawnPoints = gameManager.GetHorizontalSnapPositions();
 
         int spawnPointIndex;
-        int playerFocusChance = Random.Range(0, 10);
+        int playerFocusChance = UnityEngine.Random.Range(0, 10);
 
         if (playerFocusChance > 6)
-            spawnPointIndex = Random.Range(0, spawnPoints.Length);
+            spawnPointIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
         else
             spawnPointIndex = gameState.getPlayerPositionIndex();
 
@@ -122,9 +137,9 @@ public class EnemySpawner : MonoBehaviour
 
             for (int i = 0; i < timesSameSpawnPosition; i++)
             {
-                playerFocusChance = Random.Range(i, 10);
+                playerFocusChance = UnityEngine.Random.Range(i, 10);
                 if (playerFocusChance < 6)
-                    spawnPointIndex = Random.Range(0, spawnPoints.Length);
+                    spawnPointIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
                 else
                     spawnPointIndex = gameState.getPlayerPositionIndex();
                 if (spawnPointIndex != prevSpawnPosition)
@@ -155,7 +170,6 @@ public class EnemySpawner : MonoBehaviour
 
         List<GameObject> enemiesOnPoint = enemiesBySpawnPoint[spawnPointIndex];
 
-        // Speed limiting logic (applies to ALL spawn points)
         if (enemiesOnPoint.Count > 0)
         {
             EnemyMovement lastEnemyMovement =
@@ -169,7 +183,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        enemy.GetComponent<AudioSource>().generator = availableAudioClips[Random.Range(0, availableAudioClips.Length)];
+        enemy.GetComponent<AudioSource>().generator = availableAudioClips[UnityEngine.Random.Range(0, availableAudioClips.Length)];
         enemy.GetComponent<AudioSource>().Play();
 
         enemiesOnPoint.Add(enemy);
