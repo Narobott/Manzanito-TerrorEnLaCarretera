@@ -9,7 +9,6 @@ public class GameOverPanelManager : MonoBehaviour
     [SerializeField] private TextMeshPro NewScore;
     [SerializeField] private GameObject Systems;
     [SerializeField] private AudioSource audioSource;
-    private int newScoreCount = 0;
     private GameState gameState;
 
     private void Awake()

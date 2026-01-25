@@ -68,7 +68,8 @@ public class EnemyMovement : MonoBehaviour
             {
                 bNextPointIsCloseCall = false;
                 if (collision.GetComponent<CharacterMovement>().bIsParryMode)
-                {
+                {   
+                    gameState.SetGameState(GameState.GameStateEnum.ImpactFrame);
                     explosionar();
                     GameObject points = Instantiate(PointsGO, transform.position, Quaternion.identity);
                     points.GetComponent<RetrievePoints>().SetIsParry(true);
@@ -113,7 +114,7 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator DestruirESPLOSION(GameObject ESPLOSION)
     {
-        yield return new WaitForSeconds(.75f);
+        yield return new WaitForSeconds(.6f);
         GameObject.Destroy(ESPLOSION);
     }
 

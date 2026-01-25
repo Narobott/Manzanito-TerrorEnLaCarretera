@@ -11,7 +11,9 @@ public class GameState : MonoBehaviour
         StartScreen,
         Game,
         LoseScreen,
-        SettingsScreen
+        SettingsScreen,
+        ParryTutorial,
+        ImpactFrame
     }
 
     public GameStateEnum gameState = GameStateEnum.StartScreen;
@@ -20,6 +22,7 @@ public class GameState : MonoBehaviour
 
     public void SetGameState(GameStateEnum _gameState)
     {
+        GameStateEnum prevGameState = gameState;
         gameState = _gameState;
         gameStateChanged.Invoke(gameState);
 
@@ -54,12 +57,17 @@ public class GameState : MonoBehaviour
                 settingsScreenPanel.SetActive(true);
                 startGamePannel.SetActive(false);
                 break;
+
+            case GameStateEnum.ImpactFrame:
+                StartCoroutine(fullscreenEffectsManager.InvokeImpactFrame(prevGameState));
+                break;
         }
 
     }
 
 
     private EnemySpawner enemySpawner;
+    [SerializeField] private FullscreenEffectsManager fullscreenEffectsManager;
     private void Awake()
     {
         SwipeDetection swipeDetection = GetComponent<SwipeDetection>();
@@ -75,7 +83,7 @@ public class GameState : MonoBehaviour
 
     private void FirstSwipeDetected(Vector2 direction)
     {
-        if (!bWasFirstSwipeDetected && gameState == GameStateEnum.StartScreen)
+        if (!bWasFirstSwipeDetected && gameState == GameStateEnum.StartScreen && Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
             SetGameState(GameStateEnum.Game);
             bWasFirstSwipeDetected= true;
