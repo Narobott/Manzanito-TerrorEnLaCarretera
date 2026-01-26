@@ -1,4 +1,4 @@
-# Manzanito: Terror en la carretera - V1.0
+<img width="1024" height="512" alt="MANSANITO_TERRORENLACARRETERA" src="https://github.com/user-attachments/assets/33efca44-089e-4560-89e4-685753974975" />
 
 Endless runner game made in a weekend as a training for the 2026 Malagajam.
 
