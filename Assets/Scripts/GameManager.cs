@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField]
-    private Vector3Int[] horizontalSnapPositions = null;
+    private Vector3[] horizontalSnapPositions = null;
 
-    public Vector3Int[] GetHorizontalSnapPositions()
+    public Vector3[] GetHorizontalSnapPositions()
     {
         return horizontalSnapPositions;
     }

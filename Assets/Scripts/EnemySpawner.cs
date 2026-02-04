@@ -121,7 +121,7 @@ public class EnemySpawner : MonoBehaviour
         if (deadEnemies.Count == 0)
             return;
 
-        Vector3Int[] spawnPoints = gameManager.GetHorizontalSnapPositions();
+        Vector3[] spawnPoints = gameManager.GetHorizontalSnapPositions();
 
         int spawnPointIndex;
         int playerFocusChance = UnityEngine.Random.Range(0, 10);

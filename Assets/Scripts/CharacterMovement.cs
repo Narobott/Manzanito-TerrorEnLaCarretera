@@ -15,7 +15,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3Int startPosition = new (0, -6, 0);
     private int positionIndex = 2;
 
-    private Vector3Int[] HorizontalSnapPoints;
+    private Vector3[] HorizontalSnapPoints;
 
     private GameObject parent;
 
