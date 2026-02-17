@@ -89,7 +89,7 @@ public class GameState : MonoBehaviour
     {
         SwipeDetection swipeDetection = GetComponent<SwipeDetection>();
         swipeDetection.swipePerformed.AddListener(FirstSwipeDetected);
-        swipeDetection.pressPerformed.AddListener(PressDetected);
+        swipeDetection.pressPerformed.AddListener(null);
 
         enemySpawner = GetComponent<EnemySpawner>();
 

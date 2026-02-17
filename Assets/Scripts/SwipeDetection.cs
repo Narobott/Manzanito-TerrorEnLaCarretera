@@ -12,7 +12,8 @@ public class SwipeDetection : MonoBehaviour
 
     public static SwipeDetection instance;
     public UnityEvent<Vector2> swipePerformed;
-    public UnityEvent pressPerformed;
+    public UnityEvent<Vector2> pressPerformed;
+    public UnityEvent<Vector2> simpleSwipePerformed;
 
     [SerializeField] private InputAction position, press, move, parry;
     [SerializeField] private float swipeResistance = 100f;
@@ -21,7 +22,7 @@ public class SwipeDetection : MonoBehaviour
     private Vector2 lastPos;
 
     private bool swipeCommitted;
-
+    private DraggableCat catBeeingDragged;
     private Vector2 currentPos => lastPos;
 
     private void Awake()
@@ -42,13 +43,40 @@ public class SwipeDetection : MonoBehaviour
             startPos = currentPos;
             swipeCommitted = false;
 
-            SwipeStart.text = "Swipe started at: " + startPos;
-            pressPerformed.Invoke();
+            if (SwipeStart != null)
+            {
+                SwipeStart.text = "Swipe started at: " + startPos;
+            }
+            pressPerformed.Invoke(currentPos);
+
+
+            Vector2 origin = Camera.main.ScreenToViewportPoint(startPos);
+            Vector3 direction = Camera.main.ScreenToWorldPoint(currentPos);
+            RaycastHit hit;
+            bool bHit = Physics.Raycast(origin, direction, out hit);
+            if (bHit)
+            {
+                if (hit.collider.gameObject.tag == "DragableCat")
+                {
+                    catBeeingDragged = hit.collider .gameObject.GetComponent<DraggableCat>();
+                    catBeeingDragged.bBeeingDraged = true;
+                }
+            }
         };
 
         press.canceled += _ =>
         {
-            SwipeEnd.text = "Swipe ended at: " + currentPos;
+            if (SwipeEnd != null)
+            {
+                SwipeEnd.text = "Swipe ended at: " + currentPos;
+            }
+
+            if (catBeeingDragged != null)
+            {
+                catBeeingDragged.bBeeingDraged = false;
+                catBeeingDragged = null;
+            }
+
         };
 
         move.performed += _ =>
@@ -66,7 +94,10 @@ public class SwipeDetection : MonoBehaviour
 
     private void Start()
     {
-        SwipeResistence.text = "Current swipe resistence: " + swipeResistance;
+        if (SwipeResistence != null)
+        {
+            SwipeResistence.text = "Current swipe resistence: " + swipeResistance;
+        }
     }
 
     private void DetectSwipe()
@@ -76,14 +107,20 @@ public class SwipeDetection : MonoBehaviour
 
         Vector2 delta = currentPos - startPos;
 
-        SwipeDelta.text =
-            "Last delta: " +
-            Mathf.Abs(delta.x).ToString("F1") + ", " +
-            Mathf.Abs(delta.y).ToString("F1");
+        if (SwipeDelta != null)
+        {
+            SwipeDelta.text =
+                "Last delta: " +
+                Mathf.Abs(delta.x).ToString("F1") + ", " +
+                Mathf.Abs(delta.y).ToString("F1");
+        }
 
         // Dead zone
         if (delta.magnitude < swipeResistance)
             return;
+
+
+        executeSimpleSwipe(delta);
 
         Vector2 direction;
 
@@ -97,6 +134,8 @@ public class SwipeDetection : MonoBehaviour
             direction = new Vector2(0, Mathf.Sign(delta.y));
         }
 
+
+
         swipeCommitted = true;
         swipePerformed.Invoke(direction);
 
@@ -105,4 +144,10 @@ public class SwipeDetection : MonoBehaviour
             (direction.x != 0 ? (direction.x > 0 ? "Right" : "Left") : "Up")
         );
     }
+
+    void executeSimpleSwipe(Vector2 delta)
+    {
+        simpleSwipePerformed.Invoke(delta);
+    }
+
 }

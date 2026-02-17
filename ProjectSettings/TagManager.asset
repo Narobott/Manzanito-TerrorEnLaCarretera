@@ -10,6 +10,7 @@ TagManager:
   - PointsEnd
   - CloseCall
   - ParryTutorial
+  - DragableCat
   layers:
   - Default
   - TransparentFX
