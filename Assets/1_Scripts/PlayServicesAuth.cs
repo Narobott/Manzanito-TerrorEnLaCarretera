@@ -8,6 +8,7 @@ public class PlayServicesAuth : MonoBehaviour
 
     public void Start()
     {
+        PlayGamesPlatform.Activate();
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
     }
 

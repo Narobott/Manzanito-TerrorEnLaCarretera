@@ -22,7 +22,6 @@ public class SwipeDetection : MonoBehaviour
     private Vector2 lastPos;
 
     private bool swipeCommitted;
-    private DraggableCat catBeeingDragged;
     private Vector2 currentPos => lastPos;
 
     private void Awake()
@@ -52,16 +51,6 @@ public class SwipeDetection : MonoBehaviour
 
             Vector2 origin = Camera.main.ScreenToViewportPoint(startPos);
             Vector3 direction = Camera.main.ScreenToWorldPoint(currentPos);
-            RaycastHit hit;
-            bool bHit = Physics.Raycast(origin, direction, out hit);
-            if (bHit)
-            {
-                if (hit.collider.gameObject.tag == "DragableCat")
-                {
-                    catBeeingDragged = hit.collider .gameObject.GetComponent<DraggableCat>();
-                    catBeeingDragged.bBeeingDraged = true;
-                }
-            }
         };
 
         press.canceled += _ =>
@@ -69,12 +58,6 @@ public class SwipeDetection : MonoBehaviour
             if (SwipeEnd != null)
             {
                 SwipeEnd.text = "Swipe ended at: " + currentPos;
-            }
-
-            if (catBeeingDragged != null)
-            {
-                catBeeingDragged.bBeeingDraged = false;
-                catBeeingDragged = null;
             }
 
         };

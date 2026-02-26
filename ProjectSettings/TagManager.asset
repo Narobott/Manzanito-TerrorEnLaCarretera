@@ -11,6 +11,7 @@ TagManager:
   - CloseCall
   - ParryTutorial
   - DragableCat
+  - Destroy
   layers:
   - Default
   - TransparentFX

@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 70590437}
   - component: {fileID: 70590436}
   - component: {fileID: 70590435}
+  - component: {fileID: 70590438}
   m_Layer: 5
   m_Name: LadderboardButton
   m_TagString: Untagged
@@ -276,7 +277,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 70590436}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 70590438}
+        m_TargetAssemblyTypeName: ShowLadderboard, Assembly-CSharp
+        m_MethodName: ShowLeaderboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &70590436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +328,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70590433}
   m_CullTransparentMesh: 1
+--- !u!114 &70590438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70590433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81067cc7343187499a1294e79ca9f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &141269020
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +472,179 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0384, y: -9.8886, z: 0}
-  m_LocalScale: {x: 15.687261, y: 1.0371228, z: 1}
+  m_LocalScale: {x: 38.322407, y: 1.0371228, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &223172031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223172035}
+  - component: {fileID: 223172034}
+  - component: {fileID: 223172033}
+  - component: {fileID: 223172032}
+  m_Layer: 0
+  m_Name: Triggers
+  m_TagString: Destroy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &223172032
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223172031}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -13.85788, y: -6.514429}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 659.5611, y: 1.1649246}
+  m_EdgeRadius: 0
+--- !u!61 &223172033
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223172031}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 2.4853878, y: 9.235643}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 5.9707756, y: 19.471287}
+  m_EdgeRadius: 0
+--- !u!61 &223172034
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223172031}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -29.618906, y: 9.276876}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 6.3926735, y: 19.553753}
+  m_EdgeRadius: 0
+--- !u!4 &223172035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223172031}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.66749, y: -8.83447, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -889,8 +1086,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1196076527}
-  - component: {fileID: 1196076526}
   - component: {fileID: 1196076528}
+  - component: {fileID: 1196076529}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -898,164 +1095,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1196076526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196076525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88e172473bc61494d88739bf50022052, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SwipeDetection
-  SwipeResistence: {fileID: 0}
-  SwipeStart: {fileID: 0}
-  SwipeEnd: {fileID: 0}
-  SwipeDelta: {fileID: 0}
-  swipePerformed:
-    m_PersistentCalls:
-      m_Calls: []
-  pressPerformed:
-    m_PersistentCalls:
-      m_Calls: []
-  simpleSwipePerformed:
-    m_PersistentCalls:
-      m_Calls: []
-  position:
-    m_Name: Position
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: f39ed569-52f5-4b55-95ea-807afa132d3c
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 30fc8af4-442a-44ac-ac8e-6caec6915f5a
-      m_Path: <Touchscreen>/position
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Position
-      m_Flags: 0
-    - m_Name: 
-      m_Id: e794110d-69da-4089-94b8-af172d227b87
-      m_Path: <Mouse>/position
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Position
-      m_Flags: 0
-    m_Flags: 0
-  press:
-    m_Name: Press
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: b5b514b1-f42f-41ad-9fac-842e00aae5c1
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 998e21cb-de80-4396-aa48-08645d361c4f
-      m_Path: <Touchscreen>/Press
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Press
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 254f4d38-fc96-4c3b-a78e-af73c04bbe39
-      m_Path: <Mouse>/press
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Press
-      m_Flags: 0
-    m_Flags: 0
-  move:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 91d830f9-6371-4767-921b-ea7b7271ba23
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: WASD
-      m_Id: 9bb318c0-360e-4d66-9d2d-b1ae6b0c0ad0
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 4
-    - m_Name: negative
-      m_Id: e0e33bfe-8d57-4f7b-871b-24f2793dceb2
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: positive
-      m_Id: 2cc41d99-7f5a-4c95-b620-0bdfaa0d3507
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: Arrows
-      m_Id: b05d7027-80ce-42db-8238-20c9e7884f36
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 4
-    - m_Name: negative
-      m_Id: 67982386-edc0-4259-a1d5-087919eda412
-      m_Path: <Keyboard>/leftArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: positive
-      m_Id: 1ba4f743-5c00-439d-8d37-23fa0c341d83
-      m_Path: <Keyboard>/rightArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    m_Flags: 0
-  parry:
-    m_Name: Parry
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 380f6726-ddbe-4b6b-89c0-26e63d91720e
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: d98db5dd-95ae-40e9-9ed4-81dccaffe162
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Parry
-      m_Flags: 0
-    - m_Name: 
-      m_Id: a69ecc48-989d-4cae-a374-0639ab9e108a
-      m_Path: <Keyboard>/upArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Parry
-      m_Flags: 0
-    m_Flags: 0
-  swipeResistance: 50
 --- !u!4 &1196076527
 Transform:
   m_ObjectHideFlags: 0
@@ -1083,6 +1122,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46fbfc4d6dd57904caf675fd303c90a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayServicesAuth
+--- !u!114 &1196076529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196076525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3156eb275832e49893ab99b38cf469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  pressStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  pressMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  pressEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  position:
+    m_Name: Position
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a04d5eb6-b870-45ae-ba2e-7c6aa2aceb3b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 00a697f7-a94e-48ec-abc6-4ceb7db29a33
+      m_Path: <Touchscreen>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Position
+      m_Flags: 0
+    - m_Name: 
+      m_Id: fe16f13a-85e8-450f-8913-7b7bf735b229
+      m_Path: <Mouse>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Position
+      m_Flags: 0
+    m_Flags: 0
+  press:
+    m_Name: Press
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 88f1b8bf-1eb6-4fb8-b2fc-627ac100eccc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d646b053-ec8b-432d-8fba-d402ef2f106a
+      m_Path: <Touchscreen>/Press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Press
+      m_Flags: 0
+    - m_Name: 
+      m_Id: aa608463-5aa4-4291-b634-9176b8db0d39
+      m_Path: <Mouse>/press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Press
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &1418577855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,10 +1235,13 @@ MonoBehaviour:
   - {fileID: 2652972016353202638, guid: 85e751f2b31b4294da8f95562e864519, type: 3}
   - {fileID: 3653616353220756964, guid: 08d3f5ca510f6e94b849745069f267c9, type: 3}
   - {fileID: 2844631743207037755, guid: 81c24c78a19b3834080797187736602e, type: 3}
+  grabbableObjectPrefab: {fileID: 4085153532506613469, guid: 934313327891b744abe771954d9067b5, type: 3}
   minSpeed: 3
   maxSpeed: 10
   minSize: 0.5
   maxSize: 1.5
+  minSpawnDelay: 5
+  maxSpawnDelay: 10
 --- !u!4 &1418577857
 Transform:
   m_ObjectHideFlags: 0
@@ -1138,7 +1251,7 @@ Transform:
   m_GameObject: {fileID: 1418577855}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.85, y: -10.09, z: 0}
+  m_LocalPosition: {x: 10.85, y: -7.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1815,3 +1928,4 @@ SceneRoots:
   - {fileID: 1418577857}
   - {fileID: 141269024}
   - {fileID: 1196076527}
+  - {fileID: 223172035}

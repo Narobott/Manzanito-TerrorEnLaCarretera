@@ -1,9 +1,10 @@
+using GooglePlayGames;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
-using System;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameOverPanelManager : MonoBehaviour
 {
@@ -22,17 +23,21 @@ public class GameOverPanelManager : MonoBehaviour
 
     private void OnEnable()
     {
-        HighScore.text = PlayerPrefs.GetInt("SavedHighScore").ToString();
-        PlayGamesPlatform.Instance.ReportScore(PlayerPrefs.GetInt("SavedHighScore"), "high-score", callback);
-        StartCoroutine(CountPointsAnimation());
-    }
 
-    private void callback(bool obj)
-    {
-        if (obj)
+        int score = PlayerPrefs.GetInt("SavedHighScore");
+
+        HighScore.text = score.ToString();
+        PlayGamesPlatform.Instance.ReportScore(
+        score,
+        "CgkltejH2vMXEAIQAA",
+        (bool success) =>
         {
-            Debug.Log("New high score published correctly");
-        }
+            if (success)
+                Debug.Log("New high score published correctly");
+            else
+                Debug.Log("Failed to publish high score");
+        });
+        StartCoroutine(CountPointsAnimation());
     }
 
     private IEnumerator CountPointsAnimation()
