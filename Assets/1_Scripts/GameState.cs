@@ -45,6 +45,7 @@ public class GameState : MonoBehaviour
             case GameStateEnum.Game:
                 vignete.SetActive(false);
                 startGamePannel.SetActive(false);
+                RemoveParryTutorial();
                 break;
 
             case GameStateEnum.LoseScreen:

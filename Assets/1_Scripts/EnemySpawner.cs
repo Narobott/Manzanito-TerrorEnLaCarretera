@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
     private int timesSameSpawnPosition = 0;
 
     [SerializeField] AudioClip[] availableAudioClips;
+    [SerializeField] GameObject[] dogsPrefabs;
 
     private List<GameObject> allEnemies = new List<GameObject>();
     private List<GameObject> deadEnemies = new List<GameObject>();
@@ -57,13 +58,25 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 15; i++)
+
+        int dogsToGenerate = 16;
+
+        for (int i = 0; i < dogsToGenerate; i++)
         {
+
             GameObject createdEnemy = Instantiate(
                 enemyPrefab,
                 new Vector3(100, 100, 100),
                 Quaternion.identity
             );
+
+            Transform pivot = createdEnemy.transform.Find("Pivot");
+
+            Instantiate(
+                dogsPrefabs[Mathf.FloorToInt(i %  dogsPrefabs.Length)],
+                pivot.position,
+                Quaternion.identity,
+                pivot);
 
             createdEnemy.GetComponent<EnemyMovement>().SetGameState(gameState);
             //createdEnemy.SetActive(false);

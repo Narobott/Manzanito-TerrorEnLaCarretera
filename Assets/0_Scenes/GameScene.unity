@@ -6999,6 +6999,11 @@ MonoBehaviour:
   minSpawnRate: 0.5
   availableAudioClips:
   - {fileID: 0}
+  dogsPrefabs:
+  - {fileID: -8653719598885068355, guid: 8a9547c8a10aaeb419e83b952de81eef, type: 3}
+  - {fileID: -8653719598885068355, guid: c4765d56883505241b07739b538a96c4, type: 3}
+  - {fileID: -8653719598885068355, guid: 484ae514a09c14b4285562bcd01129c1, type: 3}
+  - {fileID: -8653719598885068355, guid: 9a1ae7cee5856c94eb9e13bcfb6dc147, type: 3}
 --- !u!114 &1875219976
 MonoBehaviour:
   m_ObjectHideFlags: 0
